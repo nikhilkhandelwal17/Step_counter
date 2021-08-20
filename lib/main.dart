@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   String _stepCountValue = 'Unknown';
   StreamSubscription<int> _subscription;
 
-  double _numerox; //numero pasos
+  double _numerox; //number of steps
   double _convert;
   double _kmx;
   double burnedx;
@@ -44,23 +44,22 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _onData(int stepCountValue) async {
-    // print(stepCountValue); //impresion numero pasos por consola
+    // print(stepCountValue); //printing number of steps per console
     setState(() {
       _stepCountValue = "$stepCountValue";
       // print(_stepCountValue);
     });
 
-    var dist = stepCountValue; //pasamos el entero a una variable llamada dist
-    double y = (dist + .0); //lo convertimos a double una forma de varias
-
+    var dist = stepCountValue; //we pass the integer to a variable called dist
+    double y = (dist + .0); //convert it to double form
     setState(() {
       _numerox =
-          y; //lo pasamos a un estado para ser capturado ya convertido a double
+          y; //we pass it to a state to be captured and converted to double
     });
 
     var long3 = (_numerox);
     long3 = num.parse(y.toStringAsFixed(2));
-    var long4 = (long3 / 10000);
+    var long4 = (long3/10000);
 
     int decimals = 1;
     int fac = pow(10, decimals);
@@ -93,7 +92,7 @@ class _MyAppState extends State<MyApp> {
   //function to determine the distance run in kilometers using number of steps
   void getDistanceRun(double _numerox) {
     var distance = ((_numerox * 78) / 100000);
-    distance = num.parse(distance.toStringAsFixed(2)); //dos decimales
+    distance = num.parse(distance.toStringAsFixed(2)); //two decimal places
     var distancekmx = distance * 34;
     distancekmx = num.parse(distancekmx.toStringAsFixed(2));
     //print(distance.runtimeType);
@@ -109,7 +108,7 @@ class _MyAppState extends State<MyApp> {
   //function to determine the calories burned in kilometers using number of steps
   void getBurnedRun() {
     setState(() {
-      var calories = _kmx; //dos decimales
+      var calories = _kmx; //two decimal places
       _calories = "$calories";
       //print(_calories);
     });
@@ -128,63 +127,61 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Step Counter app'),
           backgroundColor: Colors.black54,
         ),
-        body: new ListView(
-          padding: EdgeInsets.all(5.0),
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: 10.0),
-              width: 250, //ancho
-              height: 250, //largo tambien por numero height: 300
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment
-                        .bottomCenter, //cambia la iluminacion del degradado
-                    end: Alignment.topCenter,
-                    colors: [Color(0xFFA9F5F2), Color(0xFF01DFD7)],
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(27.0),
-                    bottomRight: Radius.circular(27.0),
-                    topLeft: Radius.circular(27.0),
-                    topRight: Radius.circular(27.0),
-                  )),
-                   child: new CircularPercentIndicator(
-                  radius: 200.0,
+        body: new Container(          
+          color: Colors.white24,
+          child: ListView(
+            padding: EdgeInsets.all(5.0),
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(top: 10.0),
+                width: 150, //ancho
+                height: 150, //length also by number height :300
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment
+                          .bottomCenter, //changing the gradient lighting
+                      end: Alignment.topCenter,
+                      colors: [Color(0xFFA9F5F2), Color(0xFF01DFD7)],
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(27.0),
+                      bottomRight: Radius.circular(27.0),
+                      topLeft: Radius.circular(27.0),
+                      topRight: Radius.circular(27.0),
+                    )),
+                child: new CircularPercentIndicator(
+                  radius: 100.0,
                   lineWidth: 13.0,
                   animation: true,
-                  center: Container(
-                    child: new Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          height: 50,
-                          width: 50,
-                          padding: EdgeInsets.only(left: 20.0),
-                          child: Icon(
-                            FontAwesomeIcons.walking,
-                            size: 30.0,
-                            color: Colors.white,
-                          ),
+                  center: new Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: Icon(
+                          FontAwesomeIcons.walking,
+                          size: 30.0,
+                          color: Colors.white,
                         ),
-                        Container(
-                          //color: Colors.orange,
-                          child: Text(
-                            '$_stepCountValue',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.purpleAccent),
-                          ),
-                          // height: 50.0,
-                          // width: 50.0,
+                      ),
+                      Container(
+                        //color: Colors.orange,
+                        child: Text(
+                          '$_stepCountValue',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Colors.purpleAccent),
                         ),
-                      ],
-                    ),
+                        // height: 50.0,
+                        // width: 50.0,
+                      ),
+                    ],
                   ),
                   percent: 0.217,
                   //percent: _convert,
                   footer: new Text(
-                    "Steps:  $_stepCountValue",
+                    "Pasos:  $_stepCountValue",
                     style: new TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0,
@@ -193,11 +190,11 @@ class _MyAppState extends State<MyApp> {
                   circularStrokeCap: CircularStrokeCap.round,
                   progressColor: Colors.purpleAccent,
                 ),
-            ),
-             Divider(
-                height: 5.0,
               ),
-                            Container(
+              Divider(
+                height: 10,
+              ),
+              Container(
                 width: 80,
                 height: 100,
                 padding: EdgeInsets.only(left: 25.0, top: 10.0, bottom: 10.0),
@@ -270,10 +267,11 @@ class _MyAppState extends State<MyApp> {
               Divider(
                 height: 2,
               ),
+              //info data km, kcal, steps
               Container(
                 padding: EdgeInsets.only(top: 2.0),
                 width: 150, //ancho
-                height: 30, //largo tambien por numero height: 300
+                height: 30, //length also by number height :300
                 color: Colors.transparent,
                 child: Row(
                   children: <Widget>[
@@ -313,7 +311,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     VerticalDivider(
-                      width: 5.0,
+                      width: 20.0,
                     ),
                     new Container(
                       padding: EdgeInsets.only(left: 10.0),
@@ -334,9 +332,9 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+              Divider(
+                height: 10,
+              ),
+              }
+              }
+              
