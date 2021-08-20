@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   String _stepCountValue = 'Unknown';
   StreamSubscription<int> _subscription;
 
-  double _numerox; //numero pasos
+  double _numerox; //number of steps
   double _convert;
   double _kmx;
   double burnedx;
@@ -44,18 +44,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _onData(int stepCountValue) async {
-    // print(stepCountValue); //impresion numero pasos por consola
+    // print(stepCountValue); //printing number of steps per console
     setState(() {
       _stepCountValue = "$stepCountValue";
       // print(_stepCountValue);
     });
 
-    var dist = stepCountValue; //pasamos el entero a una variable llamada dist
-    double y = (dist + .0); //lo convertimos a double una forma de varias
-
+    var dist = stepCountValue; //we pass the integer to a variable called dist
+    double y = (dist + .0); //convert it to double form
     setState(() {
       _numerox =
-          y; //lo pasamos a un estado para ser capturado ya convertido a double
+          y; //we pass it to a state to be captured and converted to double
     });
 
     var long3 = (_numerox);
@@ -93,7 +92,7 @@ class _MyAppState extends State<MyApp> {
   //function to determine the distance run in kilometers using number of steps
   void getDistanceRun(double _numerox) {
     var distance = ((_numerox * 78) / 100000);
-    distance = num.parse(distance.toStringAsFixed(2)); //dos decimales
+    distance = num.parse(distance.toStringAsFixed(2)); //two decimal places
     var distancekmx = distance * 34;
     distancekmx = num.parse(distancekmx.toStringAsFixed(2));
     //print(distance.runtimeType);
@@ -109,7 +108,7 @@ class _MyAppState extends State<MyApp> {
   //function to determine the calories burned in kilometers using number of steps
   void getBurnedRun() {
     setState(() {
-      var calories = _kmx; //dos decimales
+      var calories = _kmx; //two decimal places
       _calories = "$calories";
       //print(_calories);
     });
@@ -136,11 +135,11 @@ class _MyAppState extends State<MyApp> {
               Container(
                 padding: EdgeInsets.only(top: 10.0),
                 width: 150, //ancho
-                height: 150, //largo tambien por numero height: 300
+                height: 150, //length also by number height :300
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment
-                          .bottomCenter, //cambia la iluminacion del degradado
+                          .bottomCenter, //changing the gradient lighting
                       end: Alignment.topCenter,
                       colors: [Color(0xFFA9F5F2), Color(0xFF01DFD7)],
                     ),
@@ -272,7 +271,7 @@ class _MyAppState extends State<MyApp> {
               Container(
                 padding: EdgeInsets.only(top: 2.0),
                 width: 150, //ancho
-                height: 30, //largo tambien por numero height: 300
+                height: 30, //length also by number height :300
                 color: Colors.transparent,
                 child: Row(
                   children: <Widget>[
