@@ -1,4 +1,4 @@
-# app_pasos
+# Step Counter
 
 A new Flutter project.
 
